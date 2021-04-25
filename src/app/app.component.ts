@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ZTI-RxJs-Angular';
+  result: any[];
+  resultEvent = new Subject<any[]>();
+  constructor() {
+    this.resultEvent.subscribe(result => this.result = result);
+  }
 }
